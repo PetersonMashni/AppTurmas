@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppTurmas</string>
+    <string name="menu_main_turmas">Turmas</string>
+    <string name="menu_main_alunos">Alunos</string>
 </resources>
