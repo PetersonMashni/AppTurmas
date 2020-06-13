@@ -1,5 +1,7 @@
 package br.com.petersonmashni.appturmas.Models;
 
+import android.database.Cursor;
+
 import java.util.ArrayList;
 
 public class Turma {
@@ -7,6 +9,13 @@ public class Turma {
     private String nome;
     private int sala;
     private ArrayList<TurmaAluno> turmaAlunos;
+
+    public Turma(Cursor cursor)
+    {
+        this.setTurma_id( cursor.getInt(0) );
+        this.setNome( cursor.getString(1) );
+        this.setSala( cursor.getInt(2) );
+    }
 
     public Turma(String nome, int sala){
         this.nome = nome;

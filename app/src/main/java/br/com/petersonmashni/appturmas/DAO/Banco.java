@@ -5,12 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-public class Db  extends SQLiteOpenHelper {
+public class Banco extends SQLiteOpenHelper {
 
     private static final String NOME = "AppTurmas";
     private static final int VERSAO = 1;
 
-    public Db(Context contexto){
+    public Banco(Context contexto){
         super(contexto, NOME, null, VERSAO);
     }
 
