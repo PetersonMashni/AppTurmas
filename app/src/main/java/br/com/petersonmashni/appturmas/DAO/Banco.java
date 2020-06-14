@@ -10,27 +10,29 @@ public class Banco extends SQLiteOpenHelper {
     private static final String NOME = "AppTurmas";
     private static final int VERSAO = 1;
 
-    public Banco(Context contexto){
+    public Banco(Context contexto) {
         super(contexto, NOME, null, VERSAO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS turma ( " +
-                "  turma_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT , " +
-                "  nome TEXT , " +
-                "  sala INTEGER  ) ");
+                "  turma_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "  nome TEXT, " +
+                "  sala INTEGER, " +
+                "  ativa INTEGER ) ");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS aluno ( " +
-                "  aluno_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT , " +
-                "  cpf TEXT , " +
+                "  aluno_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "  cpf TEXT, " +
                 "  nome TEXT," +
-                "  data_nascimento DATE ) ");
+                "  data_nascimento TEXT ) ");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS turma_aluno ( " +
-                "  turma_id INTEGER NOT NULL PRIMARY KEY, " +
-                "  aluno_id INTEGER NOT NULL PRIMARY KEY , " +
-                "  data_matricula DATE ) ");
+                "  turma_id INTEGER NOT NULL, " +
+                "  aluno_id INTEGER NOT NULL, " +
+                "  data_matricula TEXT," +
+                "  PRIMARY KEY(turma_id, aluno_id) ) ");
 
     }
 

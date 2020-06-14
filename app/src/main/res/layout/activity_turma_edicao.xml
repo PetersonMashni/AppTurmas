@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TurmaEdicaoActivity">
+
+
+    <TextView
+        android:id="@+id/turma_edicao_tvTurma_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/turma_edicao_tvTurma_id_hint"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="353dp" />
+
+    <EditText
+        android:id="@+id/turma_edicao_etNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/turma_edicao_etNome_hint"
+        app:layout_constraintTop_toBottomOf="@+id/turma_edicao_tvTurma_id"
+        tools:layout_editor_absoluteX="353dp" />
+
+    <EditText
+        android:id="@+id/turma_edicao_etSala"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/turma_edicao_tvSala_hint"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/turma_edicao_etNome"
+        tools:layout_editor_absoluteX="198dp" />
+
+    <Switch
+        android:id="@+id/turma_edicao_swAtiva"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/turma_edicao_swAtiva_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/turma_edicao_etSala" />
+
+    <Button
+        android:id="@+id/turma_edicao_btSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/turma_edicao_btSalvar_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/turma_edicao_swAtiva" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,7 @@ public class TurmaDAO {
 
         valores.put("nome", turma.getNome());
         valores.put("sala", turma.getSala());
+        valores.put("ativa", turma.getAtiva());
 
         db.insert("turma", null, valores);
     }
@@ -30,6 +31,7 @@ public class TurmaDAO {
 
         valores.put("nome", turma.getNome());
         valores.put("sala", turma.getSala());
+        valores.put("ativa", turma.getAtiva());
 
         db.update("turma", valores, " turma_id = " + turma.getTurma_id(), null);
     }
@@ -47,7 +49,7 @@ public class TurmaDAO {
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getReadableDatabase();
 
-        String sqlWhere = where == null ? "" : ("WHERE " + where);
+        String sqlWhere = where == null | where =="" ? "" : ("WHERE " + where);
         Cursor cursor = db.rawQuery("SELECT * FROM turma " + sqlWhere + " ORDER BY nome", null);
 
         if (cursor.getCount() > 0) {
@@ -72,8 +74,9 @@ public class TurmaDAO {
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getReadableDatabase();
 
-        String sqlWhere = where == null ? "" : ("WHERE " + where);
+        String sqlWhere = where == null | where.isEmpty() ? "" : ("WHERE " + where);
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM turma " + sqlWhere, null);
+        cursor.moveToFirst();
 
         return cursor.getInt(0);
     }
