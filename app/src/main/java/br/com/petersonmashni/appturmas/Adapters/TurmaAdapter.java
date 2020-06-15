@@ -1,6 +1,7 @@
 package br.com.petersonmashni.appturmas.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Debug;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,8 +20,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.List;
 
+import br.com.petersonmashni.appturmas.AlunoEdicaoActivity;
+import br.com.petersonmashni.appturmas.AlunosActivity;
+import br.com.petersonmashni.appturmas.InscricoesActivity;
 import br.com.petersonmashni.appturmas.Models.Turma;
 import br.com.petersonmashni.appturmas.R;
+import br.com.petersonmashni.appturmas.TurmasActivity;
 
 public class TurmaAdapter extends BaseAdapter {
     private List<Turma> listaTurma;
@@ -54,6 +60,7 @@ public class TurmaAdapter extends BaseAdapter {
             item = new ItemSuporte();
             item.ivAtiva = (ImageView) convertView.findViewById(R.id.layout_turmas_ivAtiva);
             item.tvNome = (TextView) convertView.findViewById(R.id.layout_turmas_tvNome);
+            item.btInscricoes = (Button) convertView.findViewById(R.id.layout_turma_btInscricoes);
             item.fundoTela = convertView.findViewById(R.id.layout_turmas);
 
             convertView.setTag(item);
@@ -63,8 +70,19 @@ public class TurmaAdapter extends BaseAdapter {
         }
 
         Turma turma = listaTurma.get(i);
+        item.turma = turma;
         item.tvNome.setText(turma.getNome());
         item.ivAtiva.setImageResource(turma.getAtiva()==1? R.drawable.ic_checked : R.drawable.ic_unchecked);
+        item.btInscricoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemSuporte item = (ItemSuporte) ((View)view.getParent()).getTag();
+
+                Intent intent = new Intent(view.getContext(), InscricoesActivity.class);
+                intent.putExtra("curso_id", item.turma.getTurma_id());
+                view.getContext().startActivity(intent);
+            }
+        });
 
         if (i % 2 == 0) {
             item.fundoTela.setBackgroundColor(Color.WHITE);
@@ -78,6 +96,8 @@ public class TurmaAdapter extends BaseAdapter {
     public class ItemSuporte {
         ImageView ivAtiva;
         TextView tvNome;
+        Button btInscricoes;
+        Turma turma;
         ConstraintLayout fundoTela;
         float downX = 0;
     }

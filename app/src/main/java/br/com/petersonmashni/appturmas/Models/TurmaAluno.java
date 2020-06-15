@@ -1,5 +1,10 @@
 package br.com.petersonmashni.appturmas.Models;
 
+import android.database.Cursor;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TurmaAluno {
@@ -13,6 +18,22 @@ public class TurmaAluno {
         this.aluno_id = aluno_id;
         this.data_matricula = data_matricula;
     }
+
+    public TurmaAluno(Cursor cursor)
+    {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date data_matricula = null;
+
+        try {
+            data_matricula = dateFormat.parse(cursor.getString(2));
+        } catch (ParseException ex) {
+        }
+
+        this.setTurma_id( cursor.getInt(0) );
+        this.setAluno_id( cursor.getInt(1) );
+        this.setData_matricula( data_matricula );
+    }
+
 
     public int getTurma_id() {
         return turma_id;

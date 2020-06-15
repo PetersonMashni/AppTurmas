@@ -10,8 +10,6 @@ public class Turma {
     private int sala;
     private int ativa;
 
-    private ArrayList<TurmaAluno> turmaAlunos;
-
     public Turma(){
 
     }
@@ -28,7 +26,6 @@ public class Turma {
         this.nome = nome;
         this.sala = sala;
         this.ativa = ativa;
-        this.turmaAlunos = new ArrayList<>();
     }
 
     public int getTurma_id() {

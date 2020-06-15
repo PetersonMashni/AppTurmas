@@ -8,12 +8,12 @@
 
 
     <TextView
-        android:id="@+id/incricoes_tvCurso"
+        android:id="@+id/incricoes_tvTurmaNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
         android:layout_marginEnd="156dp"
-        android:hint="@string/inscricoes_tvCurso_hint"
+        android:hint="@string/inscricoes_tvTurmaNome_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incricoes_tvCurso"></ListView>
+        app:layout_constraintTop_toBottomOf="@+id/incricoes_tvTurmaNome"></ListView>
 
     <Spinner
         android:id="@+id/incricoes_spAlunos"
