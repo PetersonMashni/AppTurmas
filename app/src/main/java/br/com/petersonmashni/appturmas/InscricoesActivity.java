@@ -26,4 +26,6 @@ public class InscricoesActivity extends AppCompatActivity {
         tvTurmaNome.setText(turma.getNome());
 
     }
+
+    
 }

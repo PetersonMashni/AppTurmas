@@ -7,6 +7,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import br.com.petersonmashni.appturmas.DAO.AlunoDAO;
+
 public class TurmaAluno {
     private int turma_id;
     private int aluno_id;
@@ -14,9 +16,9 @@ public class TurmaAluno {
     private Aluno aluno;
 
     public TurmaAluno(int turma_id, int aluno_id, Date data_matricula) {
-        this.turma_id = turma_id;
-        this.aluno_id = aluno_id;
-        this.data_matricula = data_matricula;
+        this.setTurma_id(turma_id);
+        this.setAluno_id(aluno_id);
+        this.setData_matricula(data_matricula);
     }
 
     public TurmaAluno(Cursor cursor)
@@ -57,5 +59,13 @@ public class TurmaAluno {
 
     public void setData_matricula(Date data_matricula) {
         this.data_matricula = data_matricula;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 }
