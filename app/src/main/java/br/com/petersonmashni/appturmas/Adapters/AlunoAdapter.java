@@ -1,4 +1,4 @@
-package br.com.petersonmashni.appturmas;
+package br.com.petersonmashni.appturmas.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -6,37 +6,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.util.List;
+import br.com.petersonmashni.appturmas.Models.Aluno;
+import br.com.petersonmashni.appturmas.R;
 
-import br.com.petersonmashni.appturmas.Models.Turma;
-
-public class TurmaAdapter extends BaseAdapter {
-    private List<Turma> listaTurma;
+public class AlunoAdapter extends BaseAdapter {
+    private List<Aluno> listaAluno;
     private LayoutInflater inflater;
 
-    public TurmaAdapter(Context context, List<Turma> lista) {
-        this.listaTurma = lista;
+    public AlunoAdapter(Context context, List<Aluno> lista) {
+        this.listaAluno = lista;
         this.inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return listaTurma.size();
+        return listaAluno.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return listaTurma.get(i);
+        return listaAluno.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return listaTurma.get(i).getTurma_id();
+        return listaAluno.get(i).getAluno_id();
     }
 
     @Override
@@ -44,11 +41,10 @@ public class TurmaAdapter extends BaseAdapter {
         ItemSuporte item;
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.layout_turmas, null);
+            convertView = inflater.inflate(R.layout.layout_alunos, null);
             item = new ItemSuporte();
-            item.ivAtiva = (ImageView) convertView.findViewById(R.id.layout_turmas_ivAtiva);
-            item.tvNome = (TextView) convertView.findViewById(R.id.layout_turmas_tvNome);
-            item.fundoTela = convertView.findViewById(R.id.layout_turmas);
+            item.tvNome = (TextView) convertView.findViewById(R.id.layout_alunos_tvNome);
+            item.fundoTela = convertView.findViewById(R.id.layout_alunos);
 
             convertView.setTag(item);
 
@@ -56,9 +52,8 @@ public class TurmaAdapter extends BaseAdapter {
             item = (ItemSuporte) convertView.getTag();
         }
 
-        Turma turma = listaTurma.get(i);
-        item.tvNome.setText(turma.getNome());
-        item.ivAtiva.setImageResource(turma.getAtiva()==1? R.drawable.ic_checked : R.drawable.ic_unchecked);
+        Aluno aluno = listaAluno.get(i);
+        item.tvNome.setText(aluno.getNome());
 
         if (i % 2 == 0) {
             item.fundoTela.setBackgroundColor(Color.WHITE);
@@ -69,8 +64,7 @@ public class TurmaAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private class ItemSuporte {
-        ImageView ivAtiva;
+    public class ItemSuporte {
         TextView tvNome;
         LinearLayout fundoTela;
     }

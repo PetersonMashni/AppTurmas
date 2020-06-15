@@ -12,4 +12,19 @@
     <string name="dialogo_atencao">Atenção!</string>
     <string name="dialogo_atencao_sim">Sim</string>
     <string name="dialogo_atencao_cancelar">Cancelar</string>
+    <string name="main_activity_tvAlunosCadastrados_text">Alunos cadastrados: %d</string>
+    <string name="aluno_edicao_confirma_exclusao">Você confirma a exclusão do Aluno \'%s\' ?</string>
+    <string name="aluno_edicao_tvAluno_id_hint">ID do Aluno</string>
+    <string name="aluno_edicao_etNome_hint">Nome do Aluno</string>
+    <string name="aluno_edicao_tvCpf_hint">CPF</string>
+    <string name="aluno_edicao_tvDataNascimento_hint">Data de Nascimento</string>
+    <string name="aluno_edicao_btSalvar_text">Salvar Aluno</string>
+    <string name="aluno_edicao_valida_nome">Você deve informar o nome da aluno!</string>
+    <string name="aluno_edicao_valida_cpf">Você deve informar um CPF válido para o aluno!</string>
+    <string name="aluno_edicao_valida_data_nascimento">Você deve informar uma Data válida para a Data de Nascimento do aluno!</string>
+    <string name="layout_turma_btIncricoes">Inscrições</string>
+    <string name="inscricoes_tvCurso_hint">Nome do Curso</string>
+    <string name="incricoes_btIncluirAluno_text">Inscrever</string>
+
+
 </resources>

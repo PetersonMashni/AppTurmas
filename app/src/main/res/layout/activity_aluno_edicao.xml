@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AlunoEdicaoActivity">
+
+    <TextView
+        android:id="@+id/aluno_edicao_tvAluno_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/aluno_edicao_tvAluno_id_hint"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="353dp" />
+
+    <EditText
+        android:id="@+id/aluno_edicao_etNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/aluno_edicao_etNome_hint"
+        app:layout_constraintTop_toBottomOf="@+id/aluno_edicao_tvAluno_id"
+        tools:layout_editor_absoluteX="353dp" />
+
+    <EditText
+        android:id="@+id/aluno_edicao_etCpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/aluno_edicao_tvCpf_hint"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/aluno_edicao_etNome"
+        tools:layout_editor_absoluteX="198dp" />
+
+    <EditText
+        android:id="@+id/aluno_edicao_etDataNascimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/aluno_edicao_tvDataNascimento_hint"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@+id/aluno_edicao_etCpf"
+        tools:layout_editor_absoluteX="198dp" />
+
+    <Button
+        android:id="@+id/aluno_edicao_btSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aluno_edicao_btSalvar_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aluno_edicao_etDataNascimento" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

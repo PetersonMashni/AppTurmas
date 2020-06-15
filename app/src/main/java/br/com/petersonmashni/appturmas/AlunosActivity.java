@@ -14,65 +14,65 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-import br.com.petersonmashni.appturmas.Adapters.TurmaAdapter;
-import br.com.petersonmashni.appturmas.DAO.TurmaDAO;
-import br.com.petersonmashni.appturmas.Models.Turma;
+import br.com.petersonmashni.appturmas.Adapters.AlunoAdapter;
+import br.com.petersonmashni.appturmas.DAO.AlunoDAO;
+import br.com.petersonmashni.appturmas.Models.Aluno;
 
-public class TurmasActivity extends AppCompatActivity {
+public class AlunosActivity extends AppCompatActivity {
 
-    private ListView lvTurmas;
+    private ListView lvAlunos;
 
     @Override
     protected void onResume() {
         super.onResume();
-        carregarTurmas();
+        carregarAlunos();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_turmas);
+        setContentView(R.layout.activity_alunos);
 
-        lvTurmas = findViewById(R.id.turmas_lvTurmas);
-        FloatingActionButton fbAdicionar = findViewById(R.id.turmas_fbAdicionar);
+        lvAlunos = findViewById(R.id.turmas_lvAlunos);
+        FloatingActionButton fbAdicionar = findViewById(R.id.alunos_fbAdicionar);
 
         fbAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TurmasActivity.this, TurmaEdicaoActivity.class);
+                Intent intent = new Intent(AlunosActivity.this, AlunoEdicaoActivity.class);
                 intent.putExtra("acao", "inserir");
                 startActivity(intent);
             }
         });
 
-        lvTurmas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Turma turma = (Turma) lvTurmas.getItemAtPosition(position);
-                Intent intent = new Intent(TurmasActivity.this, TurmaEdicaoActivity.class);
+                Aluno aluno = (Aluno) lvAlunos.getItemAtPosition(position);
+                Intent intent = new Intent(AlunosActivity.this, AlunoEdicaoActivity.class);
                 intent.putExtra("acao", "editar");
-                intent.putExtra("turma_id", turma.getTurma_id());
+                intent.putExtra("aluno_id", aluno.getAluno_id());
                 startActivity(intent);
             }
         });
 
 
-        lvTurmas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lvAlunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                final Turma turma = (Turma) lvTurmas.getItemAtPosition(position);
+                final Aluno aluno = (Aluno) lvAlunos.getItemAtPosition(position);
 
-                AlertDialog.Builder alerta = new AlertDialog.Builder(TurmasActivity.this);
+                final AlertDialog.Builder alerta = new AlertDialog.Builder(AlunosActivity.this);
                 alerta.setTitle(getString(R.string.dialogo_atencao));
                 alerta.setIcon(android.R.drawable.ic_dialog_alert);
-                alerta.setMessage(getString(R.string.turma_edicao_confirma_exclusao, turma.getNome()));
+                alerta.setMessage(getString(R.string.aluno_edicao_confirma_exclusao, aluno.getNome()));
                 alerta.setNeutralButton(getString(R.string.dialogo_atencao_cancelar), null);
 
                 alerta.setPositiveButton(getString(R.string.dialogo_atencao_sim), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        TurmaDAO.excluir(TurmasActivity.this, turma.getTurma_id());
-                        carregarTurmas();
+                        AlunoDAO.excluir(AlunosActivity.this, aluno.getAluno_id());
+                        carregarAlunos();
                     }
                 });
                 alerta.show();
@@ -82,9 +82,9 @@ public class TurmasActivity extends AppCompatActivity {
         });
     }
 
-    private void carregarTurmas() {
-        List<Turma> listaTurmas = TurmaDAO.listar(this, "");
-        TurmaAdapter adapter = new TurmaAdapter(this, listaTurmas);
-        lvTurmas.setAdapter(adapter);
+    private void carregarAlunos() {
+        List<Aluno> listaAlunos = AlunoDAO.listar(this, "");
+        AlunoAdapter adapter = new AlunoAdapter(this, listaAlunos);
+        lvAlunos.setAdapter(adapter);
     }
 }

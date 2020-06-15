@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_turmas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
-
+    android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:id="@+id/layout_turmas_ivAtiva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_turmas_tvNome"
+        app:layout_constraintEnd_toStartOf="@+id/layout_turmas_tvNome"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/checkbox_on_background" />
 
     <TextView
         android:id="@+id/layout_turmas_tvNome"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/layout_turma_btIncricoes"
+        app:layout_constraintEnd_toStartOf="@+id/layout_turma_btIncricoes"
+        app:layout_constraintStart_toEndOf="@+id/layout_turmas_ivAtiva" />
+
+    <Button
+        android:id="@+id/layout_turma_btIncricoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/layout_turma_btIncricoes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layout_turmas_tvNome"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

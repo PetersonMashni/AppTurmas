@@ -11,10 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import br.com.petersonmashni.appturmas.DAO.AlunoDAO;
 import br.com.petersonmashni.appturmas.DAO.TurmaDAO;
+import br.com.petersonmashni.appturmas.Models.Aluno;
 
 public class MainActivity extends AppCompatActivity {
     TextView tvTurmasCadastradas;
+    TextView tvAlunosCadastrados;
 
     @Override
     protected void onResume() {
@@ -25,12 +28,17 @@ public class MainActivity extends AppCompatActivity {
     private void atualizaTotais() {
         int turmasAtivas = TurmaDAO.getCount(this, "ativa=1");
         int turmas = TurmaDAO.getCount(this, "");
+        int alunos = AlunoDAO.getCount(this, "");
 
         tvTurmasCadastradas.setText(
                 getString(
                         R.string.main_activity_tvTurmasAtivas_text,
                         turmasAtivas,
                         turmas));
+        tvAlunosCadastrados.setText(
+                getString(
+                        R.string.main_activity_tvAlunosCadastrados_text,
+                        alunos));
     }
 
     @Override
@@ -43,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 turmas();
+            }
+        });
+
+        tvAlunosCadastrados = findViewById(R.id.main_tvAlunosCadastrados);
+        tvAlunosCadastrados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alunos();
             }
         });
     }
@@ -71,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void alunos() {
+        Intent intent = new Intent(MainActivity.this, AlunosActivity.class);
+        startActivity(intent);
     }
 
 }

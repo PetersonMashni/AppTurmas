@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TurmaEdicaoActivity"></activity>
+        <activity android:name=".InscricoesActivity"></activity>
+        <activity android:name=".AlunoEdicaoActivity" />
+        <activity android:name=".AlunosActivity" />
+        <activity android:name=".TurmaEdicaoActivity" />
         <activity android:name=".TurmasActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
